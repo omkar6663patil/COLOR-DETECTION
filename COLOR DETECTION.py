@@ -1,22 +1,14 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# # TSF #GRIPTASK
-# #COLOR DETECTION
-# #Author: Omkar Patil
-
-# In[17]:
-
+#TSF #GRIPTASK
+#COLOR DETECTION
+#Author: Omkar Patil
 
 import cv2          #install using pip install opencv-python 
 import pandas as pd      #install using pip install pandas
 import matplotlib.pyplot as plt
 
 
-# # image path
-
-# In[27]:
-
+#image path
 
 img_path='COLOR IMAGE.jpg'     #array format
 img=cv2.imread(img_path)
@@ -24,11 +16,7 @@ img=cv2.resize(img,(800,600))    #Resize image
 plt.imshow(img)
 
 
-# # Values of color in open-cv(BGR)
-
-# In[33]:
-
-
+#Values of color in open-cv(BGR)
 click = False
 r = g = b = x_pos = y_pos = 0
 index = ['Color','color_name', 'hex', 'R', 'G', 'B']
@@ -37,11 +25,7 @@ print(df.head(3))
 print(len(df))    #total number of row
 
 
-# # Defining functions to detect color from csv file
-
-# In[35]:
-
-
+#Defining functions to detect color from csv file
 def get_color_name(r,g,b):
     minimum = 10000
     for i in range(len(df)):
@@ -50,9 +34,6 @@ def get_color_name(r,g,b):
             minimum = d
             cname = df.loc[i, 'color_name']
     return cname
-
-
-# In[34]:
 
 
 def draw_function(event, x, y, flags, param):
@@ -67,11 +48,7 @@ def draw_function(event, x, y, flags, param):
         r = int(r)
 
 
-# # For execution of image
-
-# In[ ]:
-
-
+#For execution of image
 cv2.namedWindow('image')
 cv2.setMouseCallback('image', draw_function)
 #cv2.imshow('image',img)
@@ -91,10 +68,3 @@ while True:
     if cv2.waitKey(2) & 0XFF == 27:
         break
 cv2.destroyAllWindows()
-
-
-# In[ ]:
-
-
-
-
